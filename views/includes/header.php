@@ -24,13 +24,15 @@
 		<div id='h-user'>
 			
 			<?php 
-			if(isset($_SESSION['user'])){
+			$user=$this->getUser();
+			
+			if($user){
 
 				echo "<a href='#' id='user-show'><i class='fas fa-user-check' style='font-size:24px'></i></a>";
 				echo "<div id='user-info' class='hide' >
 						<ul>
 						<li>"
-					.$_SESSION['user']['nome'].
+					.$user['nome'].
 						"</li>
 						<li>
 					<a href='".HOME_URI."/user/logout'><i class=' fas fa-sign-out-alt' style='font-size:24px'></i></a>
