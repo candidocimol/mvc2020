@@ -139,9 +139,9 @@ class MainController
 	public function checkUserLogin(){
 		if(isset($_SESSION['user'])){
 			$this->user=$_SESSION['user'];
-			if(isset($_SESSION['user']['permission'])){
+			/*if(isset($_SESSION['user']['permission'])){
 				$this->permission_required=$_SESSION['user']['permission'];
-			}
+			}*/
 		}else{
 			$this->user=null;
 		}

@@ -1,8 +1,13 @@
 <?php
 
 class AlunoController extends MainController{
-
+    public function __construct(){
+        $this->login_required=true;
+    }
     public function index(){
+        if($this->login_required)
+            /* verificar se temum uusario logado */
+
         /**Criar objeto do modelo */
         $modelo=$this->load_model("aluno");
         $alunos=$modelo->select();
@@ -44,6 +49,7 @@ class AlunoController extends MainController{
                 $acao="update";
             }else{
                 $acao="insert";
+                unset($_POST['aluno']['id']);
             }
             
             if($alunos=$modelo->{$acao}($_POST['aluno'])){
@@ -56,9 +62,11 @@ class AlunoController extends MainController{
                 $msg['class']="danger";
             }
             $_SESSION['msg'][]=$msg;
+
+            
         }
 
-      //  header("location:".HOME_URI."aluno/");
+        header("location:".HOME_URI."aluno/");
     }
 
     public function editar($id){
@@ -72,8 +80,23 @@ class AlunoController extends MainController{
 		
 	    require PATH . '/views/aluno/form_aluno.php';
 		
-		require PATH . '/views/includes/footer.php';
+        require PATH . '/views/includes/footer.php';
+        
+    }
 
+    public function excluir($id){
+        $modelo=$this->load_model("aluno");  
+        if($modelo->delete($id)){
+            /**Mensagem de sucesso */
+            $msg['msg']="Aluno excluído com sucesso!";
+            $msg['class']="success";
+        }else{
+            /**Mensagem de erro */
+            $msg['msg']="Falha ao excluir o aluno!";
+            $msg['class']="danger";
+        }
+        $_SESSION['msg'][]=$msg;
+        header("location:".HOME_URI."aluno/");
     }
 
 }

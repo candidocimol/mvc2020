@@ -27,14 +27,20 @@ class AlunoModel extends MainModel{
         return $resultado=$this->db->insert("aluno",$array);
     }
 
+    /**
+     * 
+     */
     public function update($aluno){
-        $sql="UPDATE aluno SET nome='".$aluno['nome']."', matricula='".$aluno['matricula']."', 
-        data_nascimento='".$aluno['data_nascimento']."' WHERE id=".$aluno['id'];
-
-        $retorno=$this->db->query($sql, null);
-        return $retorno;
+        return $this->db->update("aluno","id",$aluno['id'], $aluno);
     }
-    
+
+    /**
+     * 
+     */
+    public function delete($id){
+        return $this->db->delete("aluno","id",$id);
+    }
+
 
 
 }

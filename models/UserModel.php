@@ -7,8 +7,9 @@ class UserModel extends MainModel
 	*
 	**/
 	public function autenticar($email, $password){
-	
+		/*Lista  de colunas a serem retornadas */
 		$cols=['id','nome','email','nivel'];
+		
 		$where['email']=$email;
 		$where['senha']=$password;
 		$user=$this->db->select("usuario", $cols, $where);

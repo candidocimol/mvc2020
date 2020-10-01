@@ -24,9 +24,10 @@
 		<div id='h-user'>
 			
 			<?php 
+			/*Obter dados doi usuario corrente */
 			$user=$this->getUser();
 			
-			if($user){
+			if($user){//se usuario registrado/logado
 
 				echo "<a href='#' id='user-show'><i class='fas fa-user-check' style='font-size:24px'></i></a>";
 				echo "<div id='user-info' class='hide' >
@@ -38,7 +39,7 @@
 					<a href='".HOME_URI."/user/logout'><i class=' fas fa-sign-out-alt' style='font-size:24px'></i></a>
 					</li>
 				</div>";
-				}else{
+			}else{
 				echo "<a href='".HOME_URI."/user/login'><i class=' fas fa-sign-in-alt' style='font-size:24px'></i></a>";
 			}
 

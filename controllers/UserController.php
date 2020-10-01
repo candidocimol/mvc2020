@@ -40,7 +40,7 @@ class UserController extends MainController
 		$msg['class']="success";
 		$msg['msg']="By";
 		$_SESSION['msg'][]=$msg;
-		header("Refresh: 3; url =".HOME_URI);
+		header("Refresh: 2; url =".HOME_URI);
     } // logout
 
     /**
@@ -55,9 +55,11 @@ class UserController extends MainController
 				$this->setUser($user);
 				$msg['class']="success";
 				$msg['msg']="Login realizado com sucesso!";
-				$_SESSION['msg'][]=$msg;
-				
+			}else{
+				$msg['class']="danger";
+				$msg['msg']="Falha ao realizar login!";
 			}
+			$_SESSION['msg'][]=$msg;
 			
 		}
 		

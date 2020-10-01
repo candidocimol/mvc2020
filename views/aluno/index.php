@@ -23,6 +23,7 @@
                 <td>".$aluno['data_nascimento']."</td>
                 <td>
                     <a href='".HOME_URI."aluno/editar/".$aluno['id']."' >Editar</a>
+                    <a href='".HOME_URI."aluno/excluir/".$aluno['id']."' >Excluir</a>
                 </td>
                 </tr>";
             }
