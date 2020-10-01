@@ -22,10 +22,19 @@ class AlunoModel extends MainModel{
     }
     
 
-    public function insert($array){
-        
+    public function insert($aluno){
+        $array[]=$aluno;
         return $resultado=$this->db->insert("aluno",$array);
     }
+
+    public function update($aluno){
+        $sql="UPDATE aluno SET nome='".$aluno['nome']."', matricula='".$aluno['matricula']."', 
+        data_nascimento='".$aluno['data_nascimento']."' WHERE id=".$aluno['id'];
+
+        $retorno=$this->db->query($sql, null);
+        return $retorno;
+    }
+    
 
 
 }

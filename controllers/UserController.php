@@ -36,11 +36,11 @@ class UserController extends MainController
 	 * @author Cândido Farias
 	 */
     public function logout() {
-		unset($_SESSION['user']);
+		$this->unsetUser();
 		$msg['class']="success";
 		$msg['msg']="By";
 		$_SESSION['msg'][]=$msg;
-		header("Refresh: 5; url =".HOME_URI);
+		header("Refresh: 3; url =".HOME_URI);
     } // logout
 
     /**
@@ -48,20 +48,12 @@ class UserController extends MainController
 	 * @author Cândido Farias
 	 */
     public function autenticar() {
-		//print_r($_POST);
-		
 		if(isset($_POST['user'])){
 			$userModel=$this->load_model("user");
 			$user=$userModel->autenticar($_POST['user']['email'],md5($_POST['user']['password']));
 			if($user){
-				$_SESSION['user']=$user[0];
-				if($user[0]['coordenador']==1){
-					//echo $user[0]['pessoa_id'];
-					$curso=$userModel->loadCursoCoordenador($user[0]['pessoa_id']);
-					if($curso){
-						$_SESSION['curso']=$curso[0];
-					}
-				}
+				$this->setUser($user);
+				//	$_SESSION['user']=$user;
 				$msg['class']="success";
 				$msg['msg']="Login realizado com sucesso!";
 				$_SESSION['msg'][]=$msg;
@@ -69,7 +61,7 @@ class UserController extends MainController
 			}
 			
 		}
-		//print_r($_SESSION);
+		
 		header("Refresh: 5; url =".HOME_URI);
 	
     } // autenticar

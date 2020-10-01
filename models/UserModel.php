@@ -7,7 +7,7 @@ class UserModel extends MainModel
 	*
 	**/
 	public function autenticar($email, $password){
-	echo $sql="SELECT p.id AS pessoa_id, p.nome, e.email, u.nick,
+	/*echo $sql="SELECT p.id AS pessoa_id, p.nome, e.email, u.nick,
 		(SELECT count(pessoa_id) FROM professor WHERE pessoa_id=p.id ) AS professor,
 		(SELECT count(professor_pessoa_id) FROM coordenador WHERE professor_pessoa_id=p.id ) AS coordenador 
 		FROM usuario u
@@ -22,7 +22,17 @@ class UserModel extends MainModel
 		While($item=$result->fetch(PDO::FETCH_ASSOC)){
 			$user[]=$item;
 		}
-		return $user;
+		*/
+		$cols=['id','nome','email','nivel'];
+		$where['email']=$email;
+		$where['senha']=$password;
+		$user=$this->db->select("usuario", $cols, $where);
+		if($user){
+			return $user[0];
+		}else{
+			return false;
+		}   
+		
 	}
 
 	public function loadCursoCoordenador($pessoa_id){

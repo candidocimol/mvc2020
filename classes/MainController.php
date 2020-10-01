@@ -1,7 +1,6 @@
 <?php
 /**
  * MainController - Todos os controllers deverão estender essa classe
- *
  * @package mvc.classes
  * @since 0.1
  */
@@ -59,15 +58,10 @@ class MainController
 	 * @access public
 	 */
 	public function __construct ( $parametros = array() ) {
-	
-		
-		
 		// Parâmetros
 		$this->parametros = $parametros;
-		
 		// Verifica o login
-		$this->check_userlogin();
-		
+		$this->checkUserLogin();
 	} // __construct
 	
 	/**
@@ -142,7 +136,7 @@ class MainController
 	 * @access public
 	 * @author Cândido Farias
 	 */
-	public function check_userlogin(){
+	public function checkUserLogin(){
 		if(isset($_SESSION['user'])){
 			$this->user=$_SESSION['user'];
 			if(isset($_SESSION['user']['permission'])){
@@ -150,6 +144,29 @@ class MainController
 			}
 		}else{
 			$this->user=null;
+		}
+	}
+
+	/**
+	 * get user  Define o usuário corrente
+	 * @since 0.1
+	 * @param array Array com informações do usúario
+	 * @author Cândido Farias
+	 */
+	public function setUser($user){
+		if($user){
+			$_SESSION['user']=$user;
+			$this->user;
+		}
+	}
+	/**
+	 * unset user  Encerra a sessão do usuário corrente
+	 * @since 0.1
+	 * @author Cândido Farias
+	 */
+	function unsetUser(){
+		if($this->user){
+			unset($_SESSION['user']);
 		}
 	}
 

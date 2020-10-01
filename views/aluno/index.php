@@ -21,6 +21,9 @@
                 <td>".$aluno['nome']."</td>
                 <td>".$aluno['matricula']."</td>
                 <td>".$aluno['data_nascimento']."</td>
+                <td>
+                    <a href='".HOME_URI."aluno/editar/".$aluno['id']."' >Editar</a>
+                </td>
                 </tr>";
             }
         }

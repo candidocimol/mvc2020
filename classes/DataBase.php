@@ -297,7 +297,7 @@ class DataBase
 				if($num_cols>1){
 					$sql.=" AND ";
 				}
-				$sql.=$col."=".$val;
+				$sql.=$col."='".$val."' ";
 				$num_cols++;
 				
 			}

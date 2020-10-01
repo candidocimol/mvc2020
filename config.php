@@ -10,7 +10,7 @@ define( 'PATH', dirname( __FILE__ ) );
 define( 'UP_PATH', PATH . '/uploads' );
 
 // URL da home
-define( 'HOME_URI', 'http://127.0.0.1/mvc' );
+define( 'HOME_URI', 'http://127.0.0.1/mvc2020/' );
 
 /**INFORMAÇÕES PARA CONEXAO COM O BANCO DE DADOS */
 // Nome do host da base de dados
