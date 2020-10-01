@@ -53,7 +53,6 @@ class UserController extends MainController
 			$user=$userModel->autenticar($_POST['user']['email'],md5($_POST['user']['password']));
 			if($user){
 				$this->setUser($user);
-				//	$_SESSION['user']=$user;
 				$msg['class']="success";
 				$msg['msg']="Login realizado com sucesso!";
 				$_SESSION['msg'][]=$msg;
