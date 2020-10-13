@@ -2,7 +2,8 @@
 
 class AlunoController extends MainController{
     public function __construct(){
-        $this->login_required=true;
+       parent::__construct();
+       $this->login_required=true;
     }
     public function index(){
         if($this->login_required)

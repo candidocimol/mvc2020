@@ -1,6 +1,13 @@
 <div class="wrap">
-
-    <a href="<?php echo HOME_URI;?>/aluno/add/" class="btn btn-primary">ADD</a>
+<?php 
+	$user=$this->getUser(); 
+    if ($user) {
+        if ($user['nivel']=='admin')
+    ?>
+    <a href="<?php echo HOME_URI; ?>/aluno/add/" class="btn btn-primary">ADD</a>
+    <?php
+    }
+    ?>
     <hr/>
     <table class="table table-striped">
     <thead>
@@ -21,11 +28,14 @@
                 <td>".$aluno['nome']."</td>
                 <td>".$aluno['matricula']."</td>
                 <td>".$aluno['data_nascimento']."</td>
-                <td>
-                    <a href='".HOME_URI."aluno/editar/".$aluno['id']."' >Editar</a>
-                    <a href='".HOME_URI."aluno/excluir/".$aluno['id']."' >Excluir</a>
-                </td>
-                </tr>";
+                <td>";
+                    if ($user) {
+                        if ($user['nivel']=='admin') {
+                            echo "<a href='".HOME_URI."aluno/editar/".$aluno['id']."' >Editar</a>
+                            <a href='".HOME_URI."aluno/excluir/".$aluno['id']."' >Excluir</a>";
+                        }
+                    }
+                echo "</td></tr>";
             }
         }
     

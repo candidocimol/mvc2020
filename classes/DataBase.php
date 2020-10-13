@@ -304,6 +304,7 @@ class DataBase
 			if($num_cols>2)
 				$sql=rtrim($sql,'AND');
 		}
+		
 		$return=$this->query($sql, null);
 		if($return->rowCount() > 0){
 			$result=null;

@@ -55,6 +55,7 @@ class UserController extends MainController
 				$this->setUser($user);
 				$msg['class']="success";
 				$msg['msg']="Login realizado com sucesso!";
+				
 			}else{
 				$msg['class']="danger";
 				$msg['msg']="Falha ao realizar login!";
@@ -63,7 +64,7 @@ class UserController extends MainController
 			
 		}
 		
-		header("Refresh: 5; url =".HOME_URI);
+		header("Refresh: 2; url =".HOME_URI);
 	
     } // autenticar
 	

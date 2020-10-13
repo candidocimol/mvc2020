@@ -1,3 +1,15 @@
+<?php
+  if (!defined('PATH')) exit;
+
+  $user=$this->getUser(); 
+  if ($user) {
+      if ($user['nivel']!='admin') {
+          exit;
+      }
+  }else{
+    exit;
+  }
+?>
 <form method="POST" action="<?php echo HOME_URI;?>/aluno/salvar/">
   <input type="hidden" name="aluno[id]" value="<?= $aluno['id'] ?>"/>
   <div class="form-group">
